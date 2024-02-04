@@ -1,6 +1,7 @@
 //I consciously passed some exercises.
 
 /* Write a script that prompt the user to enter base and height of the triangle and calculate an area of a triangle (area = 0.5 x b x h).
+
 const base: string | null = window.prompt('Enter base:');
 const height: string | null = window.prompt('Enter height:');
 
@@ -9,6 +10,7 @@ if(base != null && height != null){
 } */
 
 /* Write a script that prompt the user to enter side a, side b, and side c of the triangle and and calculate the perimeter of triangle (perimeter = a + b + c) 
+
 const sideA: string | null = window.prompt('Enter side a:');
 const sideB: string | null = window.prompt('Enter side b:');
 const sideC: string | null = window.prompt('Enter side c:');
@@ -18,6 +20,7 @@ if(sideA != null && sideB != null && sideC != null){
 }*/
 
 /*Get length and width using prompt and calculate an area of rectangle (area = length x width and the perimeter of rectangle (perimeter = 2 x (length + width))
+
 const lengthOfRectangle: string | null = window.prompt("Enter length:");
 const widthOfRectangle: string | null = window.prompt('Enter width:');
 
@@ -26,6 +29,7 @@ if(lengthOfRectangle != null && widthOfRectangle != null){
 }*/ 
 
 /* Get radius using prompt and calculate the area of a circle (area = pi x r x r) and circumference of a circle(c = 2 x pi x r) where pi = 3.14 
+
 const radius: string | null = window.prompt('Enter radius:');
 const customPi: number = 3.14;
 
@@ -34,6 +38,7 @@ if(radius != null){
 }*/
 
 /* Calculate the slope, x-intercept and y-intercept of y = 2x -2 
+
 const x1: number = 3
 const x2: number = 2;
 const y1: number = 2 * x1 - 2;
@@ -50,12 +55,14 @@ console.log(m === slope);
 */
 
 /* Calculate the value of y (y = x2 + 6x + 9). Try to use different x values and figure out at what x value y is 0. 
+
 const x: number = -3;
 const y: number = (x*x) + 6*x + 9;
 console.log(y);
 */
 
 /* Write a script that prompt a user to enter hours and rate per hour. Calculate pay of the person? 
+
 const workHours: string | null = window.prompt('Enter hours:');
 const ratePerHour: string | null = window.prompt('Enter rate per hour:');
 
