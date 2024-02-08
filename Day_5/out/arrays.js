@@ -1,5 +1,7 @@
 "use strict";
+// Exercise: Level 1
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.bubbleSort = exports.middleIndexCalculator = void 0;
 //Declare an empty array;
 const emptyArray = new Array();
 //Declare an array with more than 5 number of elements
@@ -61,6 +63,7 @@ function middleIndexCalculator(length) {
         return [Math.floor((length - 1) / 2), Math.ceil((length - 1) / 2)];
     }
 }
+exports.middleIndexCalculator = middleIndexCalculator;
 const middleIndex = middleIndexCalculator(itCompanies.length);
 if (typeof (middleIndex) === 'number') {
     console.log(itCompanies.slice(middleIndex, middleIndex + 1).toString());
@@ -98,6 +101,7 @@ function bubbleSort(arr, startIndex = 0) {
     }
     let temp = arr[startIndex + 1];
 }
+exports.bubbleSort = bubbleSort;
 //Remove the last IT company from the array
 const tempItCompanies01 = ['Facebook', 'Google', 'Microsoft', 'Apple', 'IBM', 'Oracle', 'Amazon'];
 tempItCompanies01.pop();
