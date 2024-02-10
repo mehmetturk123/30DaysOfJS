@@ -42,14 +42,14 @@ for(let i = 0; i < 11; i++){
 
 //Develop a small script which generate array of 5 random numbers
 
-/** Generate a random number between 0 and bound inclusively */
-function randomNumber(bound: number): number {return (Math.floor(Math.random() * (bound + 1))) };
+/** Generate a random number between min and max inclusively */
+export function randomNumber(min: number, max: number): number {return (Math.floor(Math.random() * (max - min + 1)) + min) };
 
 const randomNumbers: number[] = [];
 randomNumbers.fill(0);
 
 for(let i = 0; i < 5; i++){
-    randomNumbers[i] = randomNumber(100); 
+    randomNumbers[i] = randomNumber(0, 100); 
 }
 
 console.log(randomNumbers.toSorted((a,b) => a - b).toString());
@@ -60,9 +60,9 @@ const uniqueRandomNumbers: number[] = [];
 uniqueRandomNumbers.fill(0);
 
 for(let i = 0; i < 5; i++){    
-    let tempRandomNumber: number = randomNumber(100);
+    let tempRandomNumber: number = randomNumber(0, 100);
     while(uniqueRandomNumbers.includes(tempRandomNumber)) {
-        tempRandomNumber = randomNumber(100);
+        tempRandomNumber = randomNumber(0, 100);
     }
     uniqueRandomNumbers[i] = tempRandomNumber;
 }
@@ -79,15 +79,13 @@ const randomCharacterIndices: number[] = [];
 randomCharacterIndices.fill(0);
 const randomCharacters: string[] = [];
 
-let min = 33;
-let max = 90;
-let random = Math.floor(Math.random() * (max - min + 1)) + min;
+let random = randomNumber(33,90);
 
 //Filling arrays with unique numbers and characters.
 for(let i = 0; i < bound; i++){    
     
     while(randomCharacterIndices.includes(random)) {
-        random = Math.floor(Math.random() * (max - min + 1)) + min;
+        random = randomNumber(33,90);
     }
 
     randomCharacterIndices[i] = random;
@@ -100,10 +98,10 @@ randomCharacters.forEach((value: string, index: number) => {
             const regex: RegExp = /[^a-zA-Z0-9]/g;
             randomCharacters[index] = value.replaceAll(regex,' ');
             if(randomCharacters[index] == ' '){
-                let tempRandomNumber: number = Math.floor(Math.random() * (max - min + 1)) + min;
+                let tempRandomNumber: number = randomNumber(33,90);
     
                 while(randomCharacterIndices.includes(tempRandomNumber)){
-                    tempRandomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+                    tempRandomNumber = randomNumber(33,90);
                 }
 
                 randomCharacterIndices[index] = tempRandomNumber;
@@ -114,3 +112,4 @@ randomCharacters.forEach((value: string, index: number) => {
 });
 
 console.log(randomCharacters.toString().replaceAll(/,/g,''));
+
