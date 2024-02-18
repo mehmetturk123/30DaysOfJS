@@ -36,7 +36,7 @@ function signUp(username: string, email: string, password: string): string {
 
 // Create a function called signIn which allows user to sign in to the application.
 
-//It is not a optimized function. 
+//It is not a optimized function.
 function signIn(username: string, password: string): string {
   const usernames: string[] = [];
   const passwords: string[] = [];
@@ -44,10 +44,96 @@ function signIn(username: string, password: string): string {
     usernames[index] = element.username.toLowerCase();
     passwords[index] = element.password;
   });
-  if(usernames.includes(username.toLowerCase()) && passwords.includes(password)){
+  if (
+    usernames.includes(username.toLowerCase()) &&
+    passwords.includes(password)
+  ) {
     anotherUsers[usernames.indexOf(username.toLowerCase())].isLoggedIn = true;
     return "Logged in!";
-  } else{
+  } else {
     return "Not Logged in !";
+  }
+}
+
+// Create a function called rateProduct which rates the product.
+
+function rateProduct(
+  username: string,
+  rate: number,
+  productName: string
+): string {
+  const usernames: string[] = [];
+  const productNames: string[] = [];
+  anotherUsers.forEach((element, index) => {
+    usernames[index] = element.username.toLowerCase();
+  });
+  products.forEach((element, index) => {
+    productNames[index] = element.name.toLowerCase();
+  });
+  const usernameIndex: number = usernames.indexOf(username.toLowerCase());
+  const productIndex: number = productNames.indexOf(productName.toLowerCase());
+  if (
+    usernames.includes(username.toLowerCase()) &&
+    anotherUsers[usernameIndex].isLoggedIn == true &&
+    productNames.includes(productName.toLowerCase())
+  ) {
+    anotherUsers[usernameIndex]._id;
+    products[productIndex].ratings.push({
+      userId: anotherUsers[usernameIndex]._id,
+      rate: rate,
+    });
+    return `${products[productIndex].name} product rated ${rate} point by ${username}.`;
+  } else {
+    return "You are not logged in or username is not correct or product name is not correct!";
+  }
+}
+
+// Create a function called averageRating which calculate the average rating of a product.
+
+function averageRating(productName: string): string {
+  const productNames: string[] = [];
+  products.forEach((element, index) => {
+    productNames[index] = element.name.toLowerCase();
+  });
+  const productIndex = productNames.indexOf(productName.toLowerCase());
+  if (productNames.includes(productName.toLowerCase())) {
+    let sumOfProductRates: number = 0;
+    let totalNumberOfRates: number = 0;
+
+    products[productIndex].ratings.forEach((element) => {
+      sumOfProductRates += element.rate;
+      totalNumberOfRates++;
+    });
+
+    const averageRate: number = sumOfProductRates / totalNumberOfRates;
+
+    return `Average rating of ${productName} is ${averageRate}`;
+  } else {
+    return "Given input is not a product name!";
+  }
+}
+
+// Create a function called likeProduct. This function will helps to like to the product if it is not liked and remove like if it was liked.
+
+function likeProduct(username: string, productName: string): string {
+  const usernames: string[] = [];
+  const productNames: string[] = [];
+  anotherUsers.forEach((element, index) => {
+    usernames[index] = element.username.toLowerCase();
+  });
+  products.forEach((element, index) => {
+    productNames[index] = element.name.toLowerCase();
+  });
+  const usernameIndex: number = usernames.indexOf(username.toLowerCase());
+  const productIndex: number = productNames.indexOf(productName.toLowerCase());
+  if (
+    usernames.includes(username.toLowerCase()) &&
+    anotherUsers[usernameIndex].isLoggedIn == true &&
+    productNames.includes(productName.toLowerCase())
+  ) {
+    products[productIndex].likes.push(anotherUsers[usernameIndex]._id);
+    return `${username} liked ${productName} product.`;
+  }else {
+    return "You are not logged in or username is not correct or product name is not correct!";
   }
 }
