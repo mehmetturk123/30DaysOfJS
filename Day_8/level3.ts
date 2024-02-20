@@ -60,7 +60,7 @@ function signIn(username: string, password: string): string {
 function rateProduct(
   username: string,
   rate: number,
-  productName: string
+  productName: string,
 ): string {
   const usernames: string[] = [];
   const productNames: string[] = [];
@@ -133,7 +133,7 @@ function likeProduct(username: string, productName: string): string {
   ) {
     products[productIndex].likes.push(anotherUsers[usernameIndex]._id);
     return `${username} liked ${productName} product.`;
-  }else {
+  } else {
     return "You are not logged in or username is not correct or product name is not correct!";
   }
 }
