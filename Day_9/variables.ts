@@ -1,5 +1,5 @@
 //cSpell: words Asabeneh
-export const countries: string[] = [
+export const countriesOnlyName: string[] = [
   "Finland",
   "Sweden",
   "Denmark",
